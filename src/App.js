@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import AppRoutes from './crud/navigation/AppRoutes';
+
+import AppRoutes from './utils/AppRoutes';
 
 class App extends Component {
   render() {
