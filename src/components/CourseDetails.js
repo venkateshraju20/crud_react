@@ -10,15 +10,13 @@ class CourseDetails extends Component {
             username: '',
             description: ''
         }
-        this.onSubmit = this.onSubmit.bind(this);
-        this.validate = this.validate.bind(this);
     }
 
     componentDidMount() {
-        if (this.state.id == -1) {
+        if (this.state.id === -1) {
             return;
         }
-        CourseService.retrieveCourse(this.state.id)
+        CourseService.fetchCourse(this.state.id)
             .then(response => {
                 console.log(response.data);
                 this.setState({
@@ -28,7 +26,7 @@ class CourseDetails extends Component {
             });
     }
 
-    validate(values) {
+    validate = values => {
         let errors = {}
 
         if (!values.username) {
@@ -45,7 +43,7 @@ class CourseDetails extends Component {
         return errors
     }
 
-    onSubmit(values) {
+    onSubmit = values => {
 
         console.log(values);
 
@@ -62,8 +60,6 @@ class CourseDetails extends Component {
             CourseService.updateCourse(this.state.id, course)
                 .then(() => this.props.history.push('/courses'))
         }
-
-
     }
 
 
@@ -101,8 +97,8 @@ class CourseDetails extends Component {
                                         <label>Description</label>
                                         <Field className="form-control" type="text" name="description" />
                                     </fieldset>
-                                    {id != -1 ? <button className="btn btn-success" type="submit">Update</button> 
-                                    : <button className="btn btn-success" type="submit">Save</button>}
+                                    {id != -1 ? <button className="btn btn-success" type="submit">Update</button>
+                                        : <button className="btn btn-success" type="submit">Save</button>}
 
                                 </Form>
                             )

@@ -10,18 +10,14 @@ class ListCourses extends Component {
             courses: [],
             message: null
         }
-        this.refreshCourses = this.refreshCourses.bind(this);
-        this.deleteCourseClicked = this.deleteCourseClicked.bind(this);
-        this.updateCourseClicked = this.updateCourseClicked.bind(this);
-        this.addCourseClicked = this.addCourseClicked.bind(this);
     }
 
     componentDidMount() {
         this.refreshCourses();
     }
 
-    refreshCourses() {
-        CourseService.retrieveAllCourses()
+    refreshCourses = _ => {
+        CourseService.fetchCourses()
             .then(
                 response => {
                     console.log(response.data);
@@ -30,7 +26,7 @@ class ListCourses extends Component {
             )
     }
 
-    deleteCourseClicked(id) {
+    deleteCourseClicked = id => {
         CourseService.deleteCourse(id)
             .then(
                 response => {
@@ -41,11 +37,11 @@ class ListCourses extends Component {
             );
     }
 
-    updateCourseClicked(id) {
+    updateCourseClicked = id => {
         this.props.history.push(`/courses/${id}`)
     }
 
-    addCourseClicked() {
+    addCourseClicked = _ => {
         this.props.history.push(`/courses/-1`)
     }
 

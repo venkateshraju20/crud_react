@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as Constants from '../utils/Endpoints';
 
 class CourseService {
-    retrieveAllCourses() {
+    fetchCourses() {
         return axios.get(Constants.FETCH_COURSES);
     }
 
@@ -11,7 +11,7 @@ class CourseService {
         return axios.delete(`${Constants.FETCH_COURSES}/${id}`);
     }
 
-    retrieveCourse(id) {
+    fetchCourse(id) {
         return axios.get(`${Constants.FETCH_COURSES}/${id}`);
     }
 
